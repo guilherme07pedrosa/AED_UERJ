@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+
+int fibonacci_r(int n){
+if ((n==1) || (n==2))
+    return 1;
+else
+return (fibonacci_r(n-1)+fibonacci_r(n-2));
+}
+
+
+int fibonacci_i(int n){
+    
+    int n0=0,n1=1,aux=0;
+    for (int i=1;i<n;i++){
+        aux=n0+n1;
+        n0=n1;
+        n1=aux;
+        }
+    return aux;
+}
+
+int main(){
+
+int n=5;
+
+printf("\n\nfibonacci_r %d", fibonacci_r(n));
+printf("\n\nfibonacci_i %d", fibonacci_i(n));
+
+
+    return 0;
+}
