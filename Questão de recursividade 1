@@ -1,0 +1,33 @@
+/******************************************************************************
+
+Questão de recursividade 1
+
+*******************************************************************************/
+#include <stdio.h>
+
+int func_r(int n)
+{
+if( n == 0)
+return 0;
+return (n+ func_r(n-1));
+}
+
+int func(int n){
+int soma =0;
+int resultado=0;
+while (soma<n) {
+    soma=soma+1;
+    resultado=resultado+soma;
+}
+return resultado;
+}
+int main(void)
+{
+printf("Resultado recursivo %d\n", func_r(5));
+printf("Resultado iterativo %d\n", func(5));
+return 0;
+}
+
+
+
+//Dado um número n a função soma os números inteiros de 0 a n. 
