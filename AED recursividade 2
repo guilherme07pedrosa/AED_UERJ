@@ -1,0 +1,153 @@
+/* AED recursividade 2*/
+
+#include <string.h>
+#include <stdio.h>
+#define N 3
+
+//função para cadatrar os numeros
+void cadastra(int*vet)
+{
+int i;
+for (i=0;i<N;i++){
+printf("entre com o numero;");
+scanf("%d",&vet[i]);
+}
+}
+//função para imprimir os vetores
+void imprime(int*vet)
+{
+int i;
+for (i=0;i<N;i++)
+printf("%d", vet[i]);
+}
+
+//função para calcular o máximo elemento por iteratividade
+int ElemMax_i (int*vet){
+    int i, Max; 
+    Max=vet[0];
+    for(i=0;i<(N);i++)
+        if (vet[i]>Max)
+            Max=vet[i];
+    return Max;
+}
+
+//função para calcular o mínimo elemento por iteratividade
+int ElemMin_i (int*vet){
+    int i, Min; 
+    Min=vet[0];
+    for(i=0;i<(N);i++)
+        if (vet[i]<Min)
+            Min=vet[i];
+    return Min;
+}
+
+//função para calcular a soma por iteratividade
+int Soma_i (int*vet){
+    int i, soma=0; ;
+    for(i=0;i<(N);i++)
+        soma=soma+vet[i];
+    return soma;
+}
+
+//função para calcular o produto por iteratividade
+int Produto_i (int*vet){
+    int i, produto=1; ;
+    for(i=0;i<(N);i++)
+        produto=produto*vet[i];
+    return produto;
+}
+
+//função para calcular a média por iteratividade
+float Media_i (int*vet){
+    int i; 
+    float soma=0;
+    float media;
+    for(i=0;i<(N);i++)
+        soma=soma+vet[i];
+        
+    media=soma/N;
+    return media;
+}
+
+
+/*#######################################################################*/
+
+//função para calcular o máximo elemento por recursão
+int ElemMax_r (int*vet, int n) { 
+   if (n == 1) return vet[0];
+   else {
+      int x;
+      x = ElemMax_r(vet, n-1);
+      if (x > vet[n-1]) return x;
+      else return vet[n-1]; 
+   }
+}
+
+//função para calcular o mínimo elemento por recursão
+int ElemMin_r (int*vet, int n) { 
+   if (n == 1) return vet[0];
+   else {
+      int x;
+      x = ElemMin_r(vet, n-1);
+      if (x < vet[n-1]) return x;
+      else return vet[n-1]; 
+   }
+}
+
+
+//função para calcular a soma  por recursão
+int Soma_r (int*vet, int n) { 
+   if (n == 0) 
+   return 0;
+   else 
+      return
+    vet[n-1]+Soma_r(vet, n-1);
+      
+   }
+
+
+
+//função para calcular o produto   por recursão
+int Produto_r (int*vet, int n) { 
+   if (n == 0) 
+   return 1;
+   else 
+      return
+    vet[n-1]*Produto_r(vet, n-1);
+      
+   }
+
+//função para calcular a média  por recursão
+float Media_r (int*vet, int n) { 
+   int len = sizeof(vet)/sizeof(vet[0]);
+   if (n == 0) 
+   return 0;
+   else 
+      return
+    (vet[n-1]+Media_r(vet, n-1)/(len));
+      
+   }
+
+
+//função principal
+int main()
+{
+
+int vet[N];
+
+printf("\n");
+cadastra(vet);
+imprime(vet);
+printf("\n\nMaximo elemento por iteratividade %d",ElemMax_i(vet));
+printf("\n\nMinimo elemento por iteratividade %d",ElemMin_i(vet));
+printf("\n\nSoma dos elementos por iteratividade %d",Soma_i(vet));
+printf("\n\nProduto dos elementos por iteratividade %d",Produto_i(vet));
+printf("\n\nMedia dos elementos por iteratividade %.2f",Media_i(vet));
+//printf("\n\n#######################################################");
+printf("\n\nMaximo elemento por recursividade  %d",ElemMax_r(vet,N));
+printf("\n\nMinimo elemento por recursividade  %d",ElemMin_r(vet,N));
+printf("\n\nSoma dos elementos por recursividade %d",Soma_r(vet,N));
+printf("\n\nProduto elemento por recursividade  %d",Produto_r(vet,N));
+printf("\n\nMedia elemento por recursividade  %.f",Media_r(vet,N));
+return 0;
+}
