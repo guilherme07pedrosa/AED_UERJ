@@ -1,0 +1,51 @@
+/******************************************************************************
+
+Faça um programa para ler um conjunto de números reais, armazenando-o em vetor e
+calcular o quadrado das componentes deste vetor, armazenando o resultado em outro
+vetor. Os conjuntos têm 10 elementos cada. Imprimir todos os conjuntos.
+
+*******************************************************************************/
+#include <string.h>
+#include <stdio.h>
+#include <math.h>
+#define N 10
+
+//função para cadatrar os numeros
+void cadastra(float*vet){
+    int i;
+    for (i=0;i<N;i++){
+    printf("entre com o numero;");
+    scanf("%f",&vet[i]);
+}
+}
+
+//função para imprimir os vetores
+void imprime(float*vet){
+    int i;
+    for (i=0;i<N;i++)
+    printf("%.2f ", vet[i]);
+}
+
+//função para calcular cada elemento ao quadrado e armazenar em outro vetor
+void vet_resposta(float*vet){
+    int i;
+    for (i=0;i<N;i++)
+    vet[i]= (pow(vet[i],2));
+    
+}
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    float vet[N];
+    printf("\n");
+    cadastra(vet);
+    imprime(vet);
+    vet_resposta(vet);
+    imprime(vet);
+
+    return 0;
+}
