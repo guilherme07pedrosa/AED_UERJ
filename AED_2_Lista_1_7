@@ -1,0 +1,24 @@
+/******************************************************************************
+
+Faça um programa que implemente uma função recursiva que receba por parâmetro
+um número inteiro positivo n e imprima todos os números naturais de 0 a N em ordem
+crescente.
+*******************************************************************************/
+#include <stdio.h>
+void imprimeCrescente(int i)  
+{  
+ 
+ if(i<0) 
+    return;  
+ imprimeCrescente(i-1);  
+ printf("%d\n",i);  
+}
+
+
+int main()
+{
+    int x=5;
+    imprimeCrescente(x);
+
+    return 0;
+}
