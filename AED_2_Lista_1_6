@@ -1,0 +1,27 @@
+/******************************************************************************
+
+Faça uma função recursiva para fazer a multiplicação de dois números (a e b). A
+função receberá dois números positivos não nulos a e b e deve retornar o resultado de a × b.
+*******************************************************************************/
+#include <stdio.h>
+
+float mult_r(float a,float b){
+    
+    if (b==1)
+        return a;
+    else 
+        return (a+mult_r(a,b-1));
+}
+
+
+int main()
+{
+    float x,y;
+    printf("\n Entre com o valor de a ");
+    scanf ("%f", &x);
+    printf("\n Entre com o valor de b ");
+    scanf ("%f", &y);
+    printf("Resultado da multiplicação %.2f",mult_r(x,y));
+
+    return 0;
+}
