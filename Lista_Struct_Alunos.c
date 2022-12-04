@@ -132,7 +132,7 @@ int main(){
 		scanf("%d",&te);
 		printf("\n Nome: ");
 		fflush(stdin);
-		scanf("%[^\n]s",nm);
+		scanf("%s",&nm);
 		fflush(stdin);
 		inserir(&A, mat ,te,nm);
         break;
