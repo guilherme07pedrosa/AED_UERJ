@@ -142,18 +142,23 @@ void desenfileirarUltimo(filaSeq *fila){
 
 
 //exibir fila 
-void exibirLista(filaSeq *fila){
-    int i;
-    if(!fila_vazia(fila->n)){
-       for(i=0;i<fila->valores[fila->i];i++){
-        printf("\n%d ",fila->valores[fila->i]);
-        (fila->i)++;
-       } 
-    }
-    else{
-        printf("\nFila vazia!");
-    }
-    
+void exibirLista(filaSeq *fila)
+{
+	int j;
+	int i, f, n;
+	if (fila_vazia(fila->n))
+	{
+		printf("Fila vazia\n");
+		return;
+	}
+	i = fila->i;
+	n = fila->n;
+	f = (i + n - 1) % M;
+	printf("Inicio[%d]->",i); // imprime o ini
+	for (j=i; j!=f; j=(j+1)%M)
+		printf("%d ", fila->valores[j]);
+	printf("%d ", fila->valores[j]); // imprime o ultimo
+	printf("<-[%d]Fim\n",f); // imprime o fim
 }
 
 
