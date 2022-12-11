@@ -25,7 +25,7 @@ int pilha_cheia(int topo){
 
 //verifica se a pilha esta vazia
 int pilha_vazia(int topo){
-	return(topo==-1);
+	return(topo==0);
 }
 
 //mostra o topo da pelha
@@ -63,16 +63,13 @@ void desempilha(pilhaSeq *pilha){
 
 
 
-//ImprimirPilha
+//esvazia e imprime
 void imprimirPilha(pilhaSeq *pilha){
-	int i;
-	int tam=0;
-	for (i=0;i<(pilha->topo);i++)
-		tam++;
+	while (!pilha_vazia(pilha->topo)){
+		printf("\nValor %d dempilhado!\n",pilha->valores[pilha->topo]);
+		(pilha->topo)--;
+	}
 	
-	printf("Valores da pilha ");
-	for (i=0;i<=tam;i++)
-		printf("\n %d ", pilha->valores[i]);
 }
 
 //menu
@@ -84,7 +81,7 @@ int menu(){
     printf ("1 - EMPLILHAR \n");
     printf ("2 - DESEMPILHAR \n");
     printf ("3 - MOSTRAR TOPO \n");
-    printf ("4 - IMPRIMIR VALORES DA PILHA \n");
+    printf ("4 - DESEMPILHAR IMPPRIMIMDO OS  VALORES DA PILHA \n");
     printf ("O que deseja fazer? ");
     scanf ("%d", &op);
     fflush(stdin);
