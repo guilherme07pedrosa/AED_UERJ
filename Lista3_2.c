@@ -5,7 +5,7 @@ números e proceda, para cada um deles, como segue:
 - Ao final, esvazie a pilha imprimindo os elementos.
 */
 #include <stdio.h>
-#define MAX 3
+#define MAX 15
 
 //estrutura pelha
 typedef struct pilhaSeq{
@@ -25,7 +25,7 @@ int pilha_cheia(int topo){
 
 //verifica se a pilha esta vazia
 int pilha_vazia(int topo){
-	return(topo==0);
+	return(topo==-1);
 }
 
 //mostra o topo da pelha
@@ -92,11 +92,11 @@ int menu(){
 //função principal
 int main()
 {
-    pilhaSeq pilha;
+    pilhaSeq pilha[MAX];
     int topo;
     int op;
     int valor;
-    inicializa_pilha(&topo);
+    inicializa_pilha(&pilha->topo);
     do{
     		op=menu();
     		switch(op){
@@ -107,22 +107,22 @@ int main()
     				printf("\nInforme o valor a empilhar: ");
 					scanf("%d",&valor);
 						if ((valor%2)==0)
-							empilha(&pilha,valor);
+							empilha(pilha,valor);
 						else 
 							printf("/n valores impares não são emplihados");
 					break;
 				}
     			case 2:{
-					desempilha(&pilha);
+					desempilha(pilha);
 					break;
 				}
 				case 3:{
 					printf("\nO topo da pilha é");
-					mostra_valor_topo(&pilha);
+					mostra_valor_topo(pilha);
 					break;
 				}
 				case 4:{
-					imprimirPilha(&pilha);
+					imprimirPilha(pilha);
 					break;
 				}
 				default:{
