@@ -161,7 +161,24 @@ void exibirLista(filaSeq *fila)
 	printf("<-[%d]Fim\n",f); // imprime o fim
 }
 
-
+int buscarValornafila(filaSeq *fila, int valor){
+    int j;
+	int i, f, n, achou;
+	i = fila->i;
+	n = fila->n;
+	f = (i + n - 1) % M;
+    for (j=i; j!=f; j=(j+1)%M)
+        if(fila->valores[j] == valor)
+            achou =j; 
+    if(fila->valores[j] == valor) 
+     	achou=j;
+    
+	if (achou>=0)
+		return achou;
+	else 
+		return -1; 
+	
+}
 
 
 
@@ -178,7 +195,8 @@ int main(){
 			printf("\n5- Furarfila");
 			printf("\n6- Desenfileirar pelo ultimo");
 			printf("\n7- Exibir fila");
-			printf("\n8- Sair");
+			printf("\n8- Buscar valor na fila");
+			printf("\n10- Sair");
 			printf("\nInforme sua opcao: ");
 			scanf("%d",&op);
 			switch (op){
@@ -214,17 +232,27 @@ int main(){
 			exibirLista(fila);
 			break;
 		}
+		
 		case 8:{
+			printf("\nInforme o valor: ");
+			scanf("%d",&valor);
+			buscarValornafila(fila,valor);
+			printf("\nA posicao na file e :%d",	buscarValornafila(fila,valor) );
+			fflush(stdin);
+		}
+		
+		case 10:{
 			printf("\nFinalizando...\n");
 			break;
 		}
+		
 		default:{
 			printf("\nOpção invalida!\n");
 			break;
 		}
 	}
 	}
-	while(op!=8);
+	while(op!=10);
 		return 0;
 }
 
