@@ -46,9 +46,13 @@ void percorrer () {
         no * aux;
         aux = inicioL;
         while (aux!= NULL) {
-            printf("\n%d", aux->codigo);
-            printf("\n%s", aux->nome);
-            printf("\n%f", aux->preco);
+            printf("\n Dados do produto");
+			printf("\nCodigo: ");
+			printf("%d", aux->codigo);
+			printf("\nNome: ");
+            printf("%s", aux->nome);
+            printf("\nPreco: ");
+            printf("%0.2f",aux->preco);
             aux = aux->prox;
         }
     }
@@ -58,29 +62,30 @@ void percorrer () {
 }
 
 
-void BuscaProduto(int valor){
+no *BuscaProduto(int valor){
      if(!lista_vazia()){
-        int resposta=0;
-		no * aux;
+        no * aux;
         aux = inicioL;
         while (aux!= NULL) {
-			if (aux->codigo==valor){
+            if (aux->codigo==valor){
 				printf("\n Dados do produto");
-				resposta=1;
-				printf("\n%d", aux->codigo);
-            	printf("\n%s", aux->nome);
-            	printf("\n%f", aux->preco);
-            	aux=aux->prox;
-            }
-            else 
+				printf("\nCodigo: ");
+				printf("%d", aux->codigo);
+				printf("\nNome: ");
+            	printf("%s", aux->nome);
+            	printf("\nPreco: ");
+            	printf("%0.2f",aux->preco);
+                return (aux);
+        	}
+        	else 
                 aux=aux->prox;
-				
         }
-        if (aux==NULL && resposta==0)
-            printf("\n Produto nao  esta na lista ");
-    
+        if (aux==NULL)
+            printf("\n Este Produto Nao esta na lista! ");
+		}
+		else 
+			printf("\n Nenhum Produto Na Lista! ");
     }
-}
 
 
 void remover(int valor){
@@ -100,10 +105,11 @@ void remover(int valor){
         else
             ant -> prox = aux-> prox;
             free(aux);
+            printf("\nProduto removido!");
             }
     }
     else
-        printf("ista vazia!");
+        printf("Lista vazia!");
     }
 
 //menu de opções
@@ -129,6 +135,7 @@ int main (){
 	int codigo,op;
 	float preco;
 	char nome[50], ch;
+	no*aux;
 	
     inicializa_lista();
     do{
@@ -143,12 +150,12 @@ int main (){
 				printf("Voce Selecionou Adicionar Produto\n");
 				printf("_________________________________\n");
 				printf("\nNome do Produto: ");
-				scanf(" %[^\n]s", &nome[50]);
+				scanf(" %[^\n]s", &nome[100]);
 				printf("\nPreco do Produto: ");	
 				scanf("%f", &preco);
 				printf("\nCodigo do Produto: ");
 				scanf("%d", &codigo);
-				inserirInicio(codigo, &nome[50], preco);
+				inserirInicio(codigo, &nome[100], preco);
 				
                 
 			break;
@@ -163,16 +170,17 @@ int main (){
 				printf("__________________________________\n");
 				printf("Voce Selecionou Buscar um  Produto\n");
 				printf("__________________________________\n");
-				printf("\nDigite o valor do codigo do produto");
+				printf("\nDigite o valor do codigo do produto: ");
 				scanf("%d", &codigo);
 				BuscaProduto(codigo);
+
                 
            	break;
             case 4:		//4- Remover um produto
             	printf("__________________________________\n");
 				printf("Voce Selecionou Remover um  Produto\n");
 				printf("__________________________________\n");
-				printf("\nDigite o valor do codigo do produto");
+				printf("\nDigite o valor do codigo do produto: ");
 				scanf("%d", &codigo);
 				remover(codigo);
 				
