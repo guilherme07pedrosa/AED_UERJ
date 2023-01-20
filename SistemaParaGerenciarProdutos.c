@@ -34,7 +34,9 @@ void inserirInicio(int codigo, char *nome, float preco){
     aux = (no*) malloc(sizeof(no));
     if (aux != NULL){
         aux ->codigo= codigo;
-        aux ->nome= nome;
+        aux->nome =(char *)malloc(strlen(nome)+1);
+		strcpy(aux->nome,nome);
+        //aux ->nome= nome;
         aux ->preco= preco;
         aux -> prox = inicioL;
         inicioL = aux;
